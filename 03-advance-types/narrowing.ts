@@ -4,22 +4,69 @@
 // ** WHAT IS "in" narrowing ** //
 //When you have objects with different shapes and you want to check if a certain property exists in the object , you can use the in operator to narrow the type. 
 
-type User = {name: string};
-type Admin = {name: string; role: string};
+// ----------------------------------------------------------------------------------------------------------------------------------------
+// ** typeof NARROWING ** //
+//works on primitive values : "string", "number","boolean" , "bigint", "symbol","object","function","undefined" 
 
-function printInfo(person: User | Admin) {
-    if("role" in person){
-        //Person is Admin here
-        console.log("Admin ROLE: ", person.role);
+function printId (id: string | number){
+    if(typeof id === 'string'){
+        console.log(id.toLowerCase());
     }else {
-        // Person is user here
-        console.log("User:", person.name);
+        console.log(id.toFixed(2));
+    }
+}
+     
+//----------------------------------------------------------------------------------------------------------------------------------------
+
+// ** instanceof NARROWING ** //
+//used for class instances/built-in objects 
+
+class Dog {bark(){}}
+class Cat {meow(){}}
+
+function speak (animal: Dog | Cat) {
+    if(animal instanceof Dog) {
+        animal.bark();
+    }else {
+        animal.meow();
+    }
+}
+
+// ----------------------------------------------------------------------------------------------------------------------------------------
+
+// ** THE "in" OPERATOR NARROWING ** //
+// Used for detecting object property existence:
+
+type Fish = {swim: () => void}
+type Bird = {fly: () => void}
+
+function move (animal: Fish | Bird) {
+    if("swim" in animal){
+        animal.swim();
+    }else {
+        animal.fly();
     }
 }
 
 
+// ** "in" OPERATOR EXAMPLE ** //
 
+interface Agent {
+    name: string,
+    email: string
+}
 
+interface Owner {
+    name: string,
+    email: string,
+    isAdmin: boolean
+}
+
+function isOwner (account: Agent | Owner) {
+    if("isAdmin" in account){
+        return account.isAdmin
+    }
+}
 
 
 
@@ -27,7 +74,8 @@ function printInfo(person: User | Admin) {
 /**
  * SUMMARY
  * -------
- * 🔹 Narrowing helps TypeScript identify the exact type at runtime
+ * 🔹 Narrowing help{
+ * s TypeScript identify the exact type at runtime
  * 🔹 Use checks (typeof, instanceof, "in", etc.) to control the code path
  * 🔹 Leads to safer & more predictable TypeScript code
  */

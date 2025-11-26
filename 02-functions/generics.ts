@@ -38,6 +38,9 @@ identifyThree <Bottle> ({
 
 
 // ** GENERICS WITH ARRAYS ** //
+let numbers: Array<number> = [1, 2, 3]; 
+
+
 function getSearchProducts <T> (products :T[]): T {
     const myIndex = 3
     return products[myIndex]
@@ -53,7 +56,25 @@ const getMoreSearchProducts = <T>(products: T[]): T => {
 
 
 
+// ** GENERICS WITH INTERFACES ** //
+interface ApiResponse <R> {
+        data: R;
+        success: boolean;
+}
 
+const userResponse: ApiResponse<{name: string; age: number}> = {
+    data: {name: 'Abhi', age:23},
+    success: true
+};
+
+
+// ** GENERICS IN CLASSES ** //
+class Box <T> {
+    constructor(public value: T){}
+}
+
+const numberBox = new Box<number> (100);
+const stringBox = new Box<string> ('hellow');
 
 
 
