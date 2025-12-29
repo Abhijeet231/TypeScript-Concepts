@@ -6,7 +6,7 @@
 // Types don't use extends - they rely on &
 type janwar = {name: string};
 
-type Bhalu = Animal & {honey: boolean}
+type Bhalu = janwar & {honey: boolean}
 
 
 
@@ -14,4 +14,4 @@ type Bhalu = Animal & {honey: boolean}
 type Admin = {isAdmin: true};
 type user = {name: string};
 
-type AdminUser = Admin & User
+type AdminUser = Admin & user

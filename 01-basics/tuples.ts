@@ -42,6 +42,6 @@ let product: [id:number, title: string, price: number] = [1,'pen', 12];
 
 
 // ** TUPLES IN ARRAYS ** //
-let users: [number, string] [];
-users = [[1,'abhi'], [21,'jeet']];
+let users: [number, string] [];  // tuples are arrays but here it is array of tuples
+users = [[1,'abhi'], [21,'jeet']]; // an array that contains many tuples 
 
