@@ -1,3 +1,12 @@
+// ** Generics let you write reusable, type-safe code where the type is decided later. ** //
+
+
+// ** WHy Generics ? ** // 
+// Avoid any, 
+// Write reusable code
+// keep full type safety
+// make apis hook, service scalable
+
 
 
 // ** Normal Function ** //
